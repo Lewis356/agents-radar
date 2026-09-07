@@ -16,7 +16,7 @@ on:
 
 permissions:
   contents: write
-  issues: write
+  
 
 # A late scheduled run must not overlap a manual catch-up run: both would build
 # the same CST day's digest and open a duplicate set of issues (as happened on
@@ -84,7 +84,7 @@ jobs:
           LLM_PROVIDER: deepseek
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
           PRODUCTHUNT_TOKEN: ${{ secrets.PRODUCTHUNT_TOKEN }}
-          DIGEST_REPO: ${{ github.repository }}
+          
         run: pnpm start
 
       - name: Commit digest files
@@ -130,6 +130,6 @@ jobs:
       - name: Close stale issues
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          DIGEST_REPO: ${{ github.repository }}
+          
         run: pnpm close-stale
 
